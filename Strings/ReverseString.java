@@ -1,3 +1,6 @@
+//This code is related to reversing alphabets in a string
+//Eg: "Hello" will be reversed to "olleh"
+
 public class StringPrograms {
 
 	public static void main(String[] args) {
