@@ -1,0 +1,73 @@
+package Strings;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+public class RemoveDuplicates {
+    public static void main(String[] args) {
+        String str="aabccddeeffAABBCCDDEEFF1122";
+        Approach1(str);
+        Approach2(str);
+        Approach3(str);
+        Approach4(str);
+
+    }
+
+    public static void Approach1(String str){
+        //Approach-1
+      /*  StringBuilder sb = new StringBuilder();: This initializes a StringBuilder object named sb that will be used to build the result.
+                str.chars(): This converts the string str into an IntStream of characters.
+        distinct(): This intermediate operation of IntStream filters out duplicate elements, retaining only distinct elements.
+                forEach(c -> sb.append((char) c)): This iterates over the distinct characters and appends each character to the StringBuilder sb.
+        System.out.println(sb);: This prints the content of the StringBuilder sb.
+        Overall, this code snippet generates a string containing only the distinct characters from the original string str, preserving the order of appearance of these characters.
+                */
+
+        StringBuilder sb = new StringBuilder();
+        str.chars().distinct().forEach(c ->sb.append((char) c));
+        System.out.println(sb);
+    }
+
+    public static void Approach2(String str){
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<str.length();i++){
+            char c = str.charAt(i);
+            int idx = str.indexOf(c,i+1); //will return the first occurrence of that character
+            if (idx==-1){
+                sb.append(c);
+            }
+        }
+
+        System.out.println(sb);
+    }
+
+    public static void Approach3(String str){
+        StringBuilder sb = new StringBuilder();
+        char[] arr = str.toCharArray();
+        for(int i=0;i< arr.length;i++){
+            Boolean flag = false;
+            for (int j=i+1;j< arr.length;j++){
+                if (arr[i]==arr[j]){
+                    flag=true;
+                    break;
+                }
+            }
+            if (!flag){
+                sb.append(arr[i]);
+            }
+        }
+        System.out.println(sb);
+    }
+
+    public static void Approach4(String str){
+        StringBuilder sb = new StringBuilder();
+        Set<Character> ss = new LinkedHashSet<>();
+        for (int i=0;i<str.length();i++){
+            ss.add(str.charAt(i));
+        }
+        for (Character set:ss) {
+            sb.append(set);
+        }
+        System.out.println(sb);
+    }
+}
