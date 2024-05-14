@@ -1,0 +1,13 @@
+package Strings;
+
+public class RemoveSpecialCharacters {
+    public static void main(String[] args) {
+        String str = "@#$%*&ABCD&%$@#@!#ab$#%cd@#$1%42";
+        removespclchars(str);
+    }
+
+    public static void removespclchars(String str){
+        String plainstr = str.replaceAll("[^a-zA-Z0-9]","");
+        System.out.println(plainstr);
+    }
+}
