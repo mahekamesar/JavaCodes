@@ -1,0 +1,14 @@
+package Strings;
+
+public class RemoveSpace {
+    public static void main(String[] args) {
+        String str="  A  B  c  d e ujj  fr   ";
+        System.out.println(str.replaceAll("\\s",""));
+    }
+}
+    /*In Java regular expressions, the \\s sequence represents any whitespace character. This includes spaces, tabs, newline characters, carriage returns, and other whitespace characters.
+
+        Here's what each part of \\s means:
+
+        \\: This is an escape sequence in Java, representing a single backslash. Since the backslash is a special character in Java strings, you need to use \\ to represent a literal backslash.
+        s: This is a metacharacter in regular expressions that matches any whitespace character.*/
