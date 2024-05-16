@@ -1,0 +1,88 @@
+package StackQueue;
+
+public class QueueUsingArrays {
+
+    private static final int MAX = 5;
+    int[] data=new int[MAX];
+    int end = -1;
+
+    public boolean isFull() {
+        if (end>=MAX-1) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public boolean isEmpty() {
+        if(end<0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean insert(int item) {
+        if (isFull()) {
+            System.out.println("Queue Overflow..Cannot add more items");
+            return false;
+        }
+        end++;
+        data[end] = item;
+        return true;
+    }
+
+    public boolean remove() {
+        if (isEmpty()) {
+            System.out.println("Queue is Empty..Cannot Remove more items");
+            return false;
+        }
+        int removed = data[0];
+        System.out.println(removed + " item removed from Queue");
+        // shift the elements to left
+        for (int i = 1; i <= end; i++) {
+            data[i - 1] = data[i];
+        }
+        end--;
+        return true;
+    }
+
+    public boolean front(){
+        if (isEmpty()) {
+            System.out.println("Queue is Empty..Cannot find front element");
+            return false;
+        }
+        System.out.println(data[0]);
+        return true;
+    }
+
+    public void display() {
+        if (isEmpty()){
+            System.out.println("Queue is Empty..No elements to display");
+        }
+        for (int i = 0; i <= end; i++) {
+            System.out.print(data[i] + " <- ");
+        }
+        System.out.println("END");
+    }
+
+    public static void main(String[] args) {
+        QueueUsingArrays q = new QueueUsingArrays();
+        q.insert(10);
+        q.insert(20);
+        q.insert(30);
+        q.insert(40);
+        q.insert(50);
+//        q.insert(50);
+        q.display();
+        q.remove();
+        q.remove();
+//        q.remove();
+//        q.remove();
+        q.remove();
+        q.display();
+        q.front();
+
+    }
+
+}
