@@ -1,0 +1,94 @@
+package StackQueue;
+
+public class CircularQueue {
+    private static final int MAX = 5;
+    protected int[] data = new int[MAX];
+
+    protected int end = -1;
+    protected int front = 0;
+    private int size = 0;
+
+    public boolean isFull() {
+        return size == MAX;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public boolean insert(int item) {
+        if (isFull()) {
+            System.out.println("Queue is Full..Cannot Insert");
+            return false;
+        }
+        end = (end + 1) % MAX;
+        data[end] = item;
+        size++;
+        return true;
+    }
+
+    public boolean remove() {
+        if (isEmpty()) {
+            System.out.println("Queue is Empty..Cannot remove");
+            return false;
+        }
+        int removed = data[front];
+        front = (front + 1) % MAX;
+        System.out.println(removed + " removed from Queue");
+        size--;
+        return true;
+    }
+
+    public boolean front() {
+        if (isEmpty()) {
+            System.out.println("Queue is Empty..Cannot find front element");
+            return false;
+        }
+        System.out.println(data[front]);
+        return true;
+    }
+
+    public void display() {
+        if (isEmpty()) {
+            System.out.println("Empty");
+            return;
+        }
+        int i = front;
+        int count = 0;
+        while (count < size) {
+            System.out.print(data[i] + " -> ");
+            i = (i + 1) % MAX;
+            count++;
+        }
+        System.out.println("END");
+    }
+
+    public static void main(String[] args) {
+        CircularQueue q = new CircularQueue();
+        q.insert(10);
+        q.insert(20);
+        q.insert(30);
+        q.insert(40);
+        q.insert(50);
+//        q.insert(50);
+        q.display();
+        q.remove(); //10
+        q.remove(); //20
+        q.remove(); //30
+       /* q.remove();
+        q.remove();
+        q.remove();*/
+        q.display();
+        q.front();
+        q.insert(60);
+        q.insert(70);
+        q.front();
+        q.remove(); //40
+        q.remove(); //50
+        q.display();
+        
+    }
+}
+
+/*If queue size is full we can..create a temporary array of size 2*default size of
+we can make use of ArrayList*/
